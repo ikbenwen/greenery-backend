@@ -31,7 +31,7 @@ public class User {
     private String username;
     private String email;
     private String password;
-//    private String avatar;
+    private String avatar;
 
     @ManyToMany
     @JoinTable (name = "user_role",
@@ -43,10 +43,11 @@ public class User {
 
     }
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String password, String avatar) {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.avatar = avatar;
     }
 
     public long getId() {
@@ -89,7 +90,7 @@ public class User {
         this.roles = roles;
     }
 
-//    public String getAvatar() { return avatar; }
-//
-//    public void setAvatar(String avatar) { this.avatar = avatar; }
+    public String getAvatar() { return avatar; }
+
+    public void setAvatar(String avatar) { this.avatar = avatar; }
 }

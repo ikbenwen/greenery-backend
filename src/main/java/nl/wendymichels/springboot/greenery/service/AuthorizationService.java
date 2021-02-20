@@ -4,6 +4,7 @@ import nl.wendymichels.springboot.greenery.domain.ERole;
 import nl.wendymichels.springboot.greenery.domain.Role;
 import nl.wendymichels.springboot.greenery.domain.User;
 import nl.wendymichels.springboot.greenery.payload.request.LoginRequest;
+import nl.wendymichels.springboot.greenery.payload.request.SetAvatarRequest;
 import nl.wendymichels.springboot.greenery.payload.request.SignupRequest;
 import nl.wendymichels.springboot.greenery.payload.response.JwtResponse;
 import nl.wendymichels.springboot.greenery.payload.response.MessageResponse;
@@ -89,8 +90,8 @@ public class AuthorizationService {
         // Create new user's account
         User user = new User(signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
-//                signUpRequest.getAvatar(),
-                encoder.encode(signUpRequest.getPassword()));
+                encoder.encode(signUpRequest.getPassword()),
+                signUpRequest.getAvatar());
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
@@ -158,7 +159,17 @@ public class AuthorizationService {
                 userDetails.getId(),
                 userDetails.getUsername(),
                 userDetails.getEmail(),
+                userDetails.getAvatar(),
                 roles));
+    }
+
+    public ResponseEntity<MessageResponse> updateUser(@Valid SetAvatarRequest setAvatarRequest) {
+
+        User user = this.userRepository.findByUsername("user").get();
+        user.setAvatar(setAvatarRequest.getAvatar());
+        userRepository.save(user);
+        return ResponseEntity.ok(new MessageResponse("hoi"));
+
     }
 
 }

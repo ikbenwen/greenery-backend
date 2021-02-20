@@ -22,8 +22,8 @@ public class SignupRequest {
     @Size(min = 6, max = 40)
     private String password;
 
-//    @NotBlank
-//    private String avatar;
+    @NotBlank
+    private String avatar;
 
     public String getUsername() {
         return username;
@@ -57,8 +57,8 @@ public class SignupRequest {
         this.role = role;
     }
 
-//    public void setAvatar(String avatar) {this.avatar = avatar;}
-//
-//    public String getAvatar() { return avatar;}
+    public void setAvatar(String avatar) {this.avatar = avatar;}
+
+    public String getAvatar() { return avatar;}
 
 }

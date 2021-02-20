@@ -1,7 +1,7 @@
 package nl.wendymichels.springboot.greenery.controller;
 
 import nl.wendymichels.springboot.greenery.payload.request.LoginRequest;
-//import nl.wendymichels.springboot.greenery.payload.request.SetAvatarRequest;
+import nl.wendymichels.springboot.greenery.payload.request.SetAvatarRequest;
 import nl.wendymichels.springboot.greenery.payload.request.SignupRequest;
 import nl.wendymichels.springboot.greenery.payload.response.JwtResponse;
 import nl.wendymichels.springboot.greenery.payload.response.MessageResponse;
@@ -39,11 +39,12 @@ public class AuthController {
         return authorizationService.registerUser(signUpRequest);
     }
 
-    //
-//    @PutMapping ("/profile/{id}")
-//    public ResponseEntity <MessageResponse> updateUser(@RequestBody SetAvatarRequest setAvatarRequest) {
-//        return authorizationService.updateUser(setAvatarRequest);
-//    }
+
+    @PutMapping ("/user/putavatar")
+    public ResponseEntity <MessageResponse> updateUser(@RequestBody SetAvatarRequest setAvatarRequest) {
+        System.out.println(setAvatarRequest);
+        return authorizationService.updateUser(setAvatarRequest);
+    }
 
 
 }
