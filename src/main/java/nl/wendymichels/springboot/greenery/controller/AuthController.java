@@ -40,7 +40,7 @@ public class AuthController {
     }
 
 
-    @PutMapping ("/user/putavatar")
+    @PatchMapping ("/user/update")
     public ResponseEntity <MessageResponse> updateUser(@RequestBody SetAvatarRequest setAvatarRequest) {
         System.out.println(setAvatarRequest);
         return authorizationService.updateUser(setAvatarRequest);

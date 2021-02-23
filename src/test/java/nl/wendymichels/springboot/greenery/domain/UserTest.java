@@ -1,11 +1,45 @@
 package nl.wendymichels.springboot.greenery.domain;
 
+import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class UserTest {
+
+    @Test
+    public void testUsername() {
+        User user = new User("Piet", "piet@piet.nl", "pietpiet", "plaatje");
+        String expectedUsername = "Piet";
+        String actualUsername = user.getUsername();
+        assertThat(actualUsername).isEqualTo(expectedUsername);
+    }
+
+    @Test
+    public void testEmail() {
+        User user = new User("Piet", "piet@piet.nl", "pietpiet", "plaatje");
+        String expectedEmail = "piet@piet.nl";
+        String actualEmail = user.getEmail();
+        assertThat(actualEmail).isEqualTo(expectedEmail);
+    }
+
+    @Test
+    public void testPassword() {
+        User user = new User("Piet", "piet@piet.nl", "pietpiet", "plaatje");
+        String expectedPassword = "pietpiet";
+        String actualPassword = user.getPassword();
+        assertThat(actualPassword).isEqualTo(expectedPassword);
+    }
+
+    @Test
+    public void testAvatar() {
+        User user = new User("Piet", "piet@piet.nl", "pietpiet", "plaatje");
+        String expectedAvatar = "plaatje";
+        String actualAvatar = user.getAvatar();
+        assertThat(actualAvatar).isEqualTo(expectedAvatar);
+    }
 
     @Test
     public void usernameShouldBeSaved(){

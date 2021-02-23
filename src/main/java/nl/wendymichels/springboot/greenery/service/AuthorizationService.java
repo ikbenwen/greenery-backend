@@ -163,6 +163,8 @@ public class AuthorizationService {
                 roles));
     }
 
+    /* avatar veranderen */
+
     public ResponseEntity<MessageResponse> updateUser(@Valid SetAvatarRequest setAvatarRequest) {
 
         User user = this.userRepository.findByUsername("user").get();
